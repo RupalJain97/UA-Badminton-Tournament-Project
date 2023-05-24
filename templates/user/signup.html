@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Signup </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body></br></br></br></br></br>
+        <div align="center">
+            <div align="center" class="border">
+                <div class="header1">
+                    <h1 class="word">UA Badminton Club Tournament System</h1>
+                </div></br></br></br>
+                <div class="header">
+                    <h1 class="word">Player Sign-up</h1>
+                </div></br></br></br>
+                <h2 class="word">
+                    <form action="{{ url_for('user.signup') }}" method="post">
+                        <div class="msg">{{ msg }}</div>
+                        <label>Username:</label></br>
+                        <input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox"/></br></br>
+                        <label>Password:</label></br>
+                        <input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/></br></br>
+                        <label>Confirm Password:</label></br>
+                        <input id="password2" name="password2" type="password" placeholder="Enter Your Password again" class="textbox"/></br></br>
+                        <label>First Name:</label></br>
+                        <input id="firstname" name="firstname" type="text" placeholder="Enter Your First Name" class="textbox"/></br></br>
+                        <label>Last Name:</label></br>
+                        <input id="lastname" name="lastname" type="text" placeholder="Enter Your Last Name" class="textbox"/></br></br>
+                        <label>Gender:</label></br>
+                            <label>
+                                <input type="radio" name="gender_optionsRadios" id="optionsRadios1" value="m">Male
+                            </label>
+                            <label>
+                                <input type="radio" name="gender_optionsRadios" id="optionsRadios2" value="f">Female
+                            </label>
+                            <label>
+                                <input type="radio" name="gender_optionsRadios" id="optionsRadios3" value="o">Others
+                            </label></br></br>
+                        <label>Email:</label></br>
+                        <input id="email" name="email" type="email" placeholder="Enter Your Email Address" class="textbox"/></br></br>
+                        <input type="submit" class="btn" value="Sign Up"></br>
+                    </form>
+                </h2>
+                <p class="bottom">Already have an account?  <a class="bottom" href="{{url_for('user.signin')}}"> Sign In here</a></p>
+            </div>
+        </div>
+    </body>
+</html>

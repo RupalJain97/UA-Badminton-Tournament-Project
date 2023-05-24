@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>UA Badminton Tournament</title>
+    <!-- Bootstrap Styles-->
+    <link href="/static/bootstrap.css" rel="stylesheet"/>
+    <!-- FontAwesome Styles-->
+    <link href="/static/font-awesome.css" rel="stylesheet"/>
+    <!-- Morris Chart Styles-->
+
+    <!-- Custom Styles-->
+    <link href="/static/adminCustomStyle.css" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <!-- TABLE STYLES-->
+    <link href="/static/dataTables.bootstrap.css" rel="stylesheet"/>
+
+    <script>
+        function input(data) {
+            const tableDataDiv = document.createElement('div');
+            tableDataDiv.classList.add('form-group');
+            const input = document.createElement('input');
+            input.classList.add('form-control');
+            input.name = "seed"
+            input.setAttribute("placeholder", "Enter Score")
+            input.value = data;
+            tableDataDiv.append(input);
+            return tableDataDiv;
+        }
+
+        window.onload = function () {
+            msg = "{{ msg }}";
+            var data = JSON.parse(msg.replace(/&quot;/g, '"').replace(/&#39;/g, '"').replace(/[\u0000-\u001F]+/g, ""));
+            console.log("Data from DB in html: ", data);
+            for (var i = 0; i < data["ms_events_details"].length; i++) {
+                match = data["ms_events_details"][i];
+                const tableRow = document.createElement('tr');
+                tableRow.classList.add('odd', 'gradeX');
+                const tableData1 = document.createElement('td');
+                tableData1.textContent = match.id;
+                const tableData2 = document.createElement('td');
+                tableData2.textContent = match.player1;
+                const tableData3 = document.createElement('td');
+                tableData3.append(input(match.seed));
+
+                tableRow.appendChild(tableData1);
+                tableRow.appendChild(tableData2);
+                tableRow.appendChild(tableData3);
+                document.getElementById('ms_events_details').appendChild(tableRow);
+            }
+
+            for (var i = 0; i < data["md_events_details"].length; i++) {
+                match = data["md_events_details"][i];
+                const tableRow = document.createElement('tr');
+                tableRow.classList.add('odd', 'gradeX');
+                const tableData1 = document.createElement('td');
+                tableData1.textContent = match.id;
+                const tableData2 = document.createElement('td');
+                tableData2.textContent = match.player1;
+                const tableData3 = document.createElement('td');
+                tableData3.textContent = match.player2;
+                const tableData4 = document.createElement('td');
+                tableData4.append(input(match.seed));
+
+                tableRow.appendChild(tableData1);
+                tableRow.appendChild(tableData2);
+                tableRow.appendChild(tableData3);
+                tableRow.appendChild(tableData4);
+                document.getElementById('md_events_details').appendChild(tableRow);
+            }
+
+            for (var i = 0; i < data["ws_events_details"].length; i++) {
+                match = data["ws_events_details"][i];
+                const tableRow = document.createElement('tr');
+                tableRow.classList.add('odd', 'gradeX');
+                const tableData1 = document.createElement('td');
+                tableData1.textContent = match.id;
+                const tableData2 = document.createElement('td');
+                tableData2.textContent = match.player1;
+                const tableData3 = document.createElement('td');
+                tableData3.append(input(match.seed));
+
+                tableRow.appendChild(tableData1);
+                tableRow.appendChild(tableData2);
+                tableRow.appendChild(tableData3);
+                document.getElementById('ws_events_details').appendChild(tableRow);
+            }
+
+            for (var i = 0; i < data["wd_events_details"].length; i++) {
+                match = data["wd_events_details"][i];
+                const tableRow = document.createElement('tr');
+                tableRow.classList.add('odd', 'gradeX');
+                const tableData1 = document.createElement('td');
+                tableData1.textContent = match.id;
+                const tableData2 = document.createElement('td');
+                tableData2.textContent = match.player1;
+                const tableData3 = document.createElement('td');
+                tableData3.textContent = match.player2;
+                const tableData4 = document.createElement('td');
+                tableData4.append(input(match.seed));
+
+                tableRow.appendChild(tableData1);
+                tableRow.appendChild(tableData2);
+                tableRow.appendChild(tableData3);
+                tableRow.appendChild(tableData4);
+                document.getElementById('wd_events_details').appendChild(tableRow);
+            }
+
+            for (var i = 0; i < data["xd_events_details"].length; i++) {
+                match = data["xd_events_details"][i];
+                const tableRow = document.createElement('tr');
+                tableRow.classList.add('odd', 'gradeX');
+                const tableData1 = document.createElement('td');
+                tableData1.textContent = match.id;
+                const tableData2 = document.createElement('td');
+                tableData2.textContent = match.player1;
+                const tableData3 = document.createElement('td');
+                tableData3.textContent = match.player2;
+                const tableData4 = document.createElement('td');
+                tableData4.append(input(match.seed));
+
+                tableRow.appendChild(tableData1);
+                tableRow.appendChild(tableData2);
+                tableRow.appendChild(tableData3);
+                tableRow.appendChild(tableData4);
+                document.getElementById('xd_events_details').appendChild(tableRow);
+            }
+
+            for (var i = 0; i < data["u19_events_details"].length; i++) {
+                match = data["u19_events_details"][i];
+                const tableRow = document.createElement('tr');
+                tableRow.classList.add('odd', 'gradeX');
+                const tableData1 = document.createElement('td');
+                tableData1.textContent = match.id;
+                const tableData2 = document.createElement('td');
+                tableData2.textContent = match.player1;
+                const tableData3 = document.createElement('td');
+                tableData3.append(input(match.seed));
+
+                tableRow.appendChild(tableData1);
+                tableRow.appendChild(tableData2);
+                tableRow.appendChild(tableData3);
+                document.getElementById('u19_events_details').appendChild(tableRow);
+            }
+
+            for (var i = 0; i < data["u17_events_details"].length; i++) {
+                match = data["u17_events_details"][i];
+                const tableRow = document.createElement('tr');
+                tableRow.classList.add('odd', 'gradeX');
+                const tableData1 = document.createElement('td');
+                tableData1.textContent = match.id;
+                const tableData2 = document.createElement('td');
+                tableData2.textContent = match.player1;
+                const tableData3 = document.createElement('td');
+                tableData3.append(input(match.seed));
+
+                tableRow.appendChild(tableData1);
+                tableRow.appendChild(tableData2);
+                tableRow.appendChild(tableData3);
+                document.getElementById('u17_events_details').appendChild(tableRow);
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href={{ url_for('web.home') }}>UA Badminton Tournament</a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <a href="{{url_for('user.logout')}}" >Log Out</a>
+            </li>
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li>
+                    <a class="active-menu" href="{{ url_for('admin.admin_dashboard') }}"><i class="fa fa-dashboard"></i>
+                        HOME</a>
+                </li>
+                <li>
+                    <a class="active-menu" href="{{ url_for('admin.admin_form') }}"><i class="fa fa-edit"></i>
+                        Tournament</a>
+                </li>
+                <li>
+                    <a class="active-menu" href="{{ url_for('admin.admin_events') }}"><i class="fa fa-desktop"></i>
+                        Events</a>
+                </li>
+                <li>
+                    <a class="active-menu" href="{{ url_for('admin.admin_matches') }}"><i class="fa fa-table"></i>
+                        Matches</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        Events <small></small>
+                    </h1>
+                </div>
+            </div>
+            <form role="form" action="{{url_for('admin.enter_seed')}}" method="post">
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Mens Singles (MS)
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player 1</th>
+                                            <th>Seed</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="ms_events_details">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="submit" class="btn btn-default" name="ms_events_details">Save</button>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+            </form>
+            <form role="form" action="{{url_for('admin.enter_seed')}}" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Mens Doubles (MD)
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player 1</th>
+                                            <th>Player 2</th>
+                                            <th>Seed</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="md_events_details">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <button type="submit" class="btn btn-default" name="md_events_details">Save</button>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+            </form>
+            <form role="form" action="{{url_for('admin.enter_seed')}}" method="post">
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Womens Singles (WS)
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player 1</th>
+                                            <th>Seed</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="ws_events_details">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <button type="submit" class="btn btn-default" name="ws_events_details">Save</button>
+
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+            </form>
+            <form role="form" action="{{url_for('admin.enter_seed')}}" method="post">
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Womens Doubles (WD)
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player 1</th>
+                                            <th>Player 2</th>
+                                            <th>Seed</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="wd_events_details">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <button type="submit" class="btn btn-default" name="wd_events_details">Save</button>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+            </form>
+            <form role="form" action="{{url_for('admin.enter_seed')}}" method="post">
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Mix Doubles (XD)
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player 1</th>
+                                            <th>Player 2</th>
+                                            <th>Seed</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="xd_events_details">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <button type="submit" class="btn btn-default" name="xd_events_details">Save</button>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+            </form>
+            <form role="form" action="{{url_for('admin.enter_seed')}}" method="post">
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Under 19 (U19)
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player 1</th>
+                                            <th>Seed</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="u19_events_details">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <button type="submit" class="btn btn-default" name="u19_events_details">Save</button>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+            </form>
+            <form role="form" action="{{url_for('admin.enter_seed')}}" method="post">
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Under 17 (U17)
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player 1</th>
+                                            <th>Seed</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="u17_events_details">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <button type="submit" class="btn btn-default" name="u17_events_details">Save</button>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+            </form>
+            <form role="form" action="{{url_for('admin.make_draw')}}" method="post">
+                <button type="submit" class="btn btn-default">Make Draw</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- /. PAGE INNER  -->
+</div>
+<!-- /. PAGE WRAPPER  -->
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<!--    <script src="assets/js/jquery-1.10.2.js"></script>-->
+<!--      &lt;!&ndash; Bootstrap Js &ndash;&gt;-->
+<!--    <script src="assets/js/bootstrap.min.js"></script>-->
+<!--    &lt;!&ndash; Metis Menu Js &ndash;&gt;-->
+<!--    <script src="assets/js/jquery.metisMenu.js"></script>-->
+<!--     &lt;!&ndash; DATA TABLE SCRIPTS &ndash;&gt;-->
+<!--    <script src="assets/js/dataTables/jquery.dataTables.js"></script>-->
+<!--    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>-->
+{#    <script>#}
+{#            $(document).ready(function () {#}
+{#                $('#dataTables-example').dataTable();#}
+{#            });#}
+{#    </script>#}
+<!-- Custom Js -->
+<!--    <script src="assets/js/custom-scripts.js"></script>-->
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* Store this code in 'style.css' file inside the 'static' folder*/
+
+			.header{
+				padding: 5px 120px;
+				width: 200px;
+				height: 70px;
+				background-color: #bf4d56;
+			}
+
+			.border{
+				padding: 80px 50px;
+				width: 600px;
+				height: 1050px;
+				border: 1px solid #236B8E;
+				border-radius: 0px;
+				background-color: #6997e0;
+			}
+
+			.border2{
+				padding: 80px 50px;
+				width: 600px;
+				height: 750px;
+				border: 1px solid #236B8E;
+				border-radius: 0px;
+				background-color: #6997e0;
+			}
+
+			.btn {
+				padding: 10px 40px;
+				background-color: #bf4d56;
+				color: #FFFFFF;
+				font-style: oblique;
+				font-weight: bold;
+				border-radius: 10px;
+			}
+
+			.textbox{
+				padding: 10px 40px;
+				width: 180px;
+				background-color: #bf4d56;
+				text-color: #FFFFFF;
+				border-radius: 10px;
+			}
+
+			::placeholder {
+				color: #FFFFFF;
+				opacity: 1;
+				font-style: oblique;
+				font-weight: bold;
+			}
+
+			.word{
+				color: #FFFFFF;
+				font-style: oblique;
+				font-weight: bold;
+			}
+
+			.bottom{
+				color: #FFFFFF;
+				font-style: oblique;
+				font-weight: bold;
+			}

@@ -1,0 +1,26 @@
+.score {
+    background-color: transparent;
+    border-radius: 0;
+    color: #2a2c32;
+    display: inline;
+    font-size: inherit;
+    font-weight: inherit;
+    min-width: inherit;
+    padding: 0
+}
+
+.border_b {
+    border-bottom: 1px solid #ddd;
+}
+.border_r {
+    border-right: 1px solid #ddd;
+}
+.border_br {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.draw {
+    width: 600px;
+    height: 300px;
+}

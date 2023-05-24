@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UA Badminton Tournament</title>
+	<!-- Bootstrap Styles-->
+    <link href="static/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="static/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+
+        <!-- Custom Styles-->
+    <link href="static/adminCustomStyle.css" rel="stylesheet" />
+    <link href="static/drawStyle.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="static/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper-public">
+        <nav class="navbar navbar-default top-navbar-public" role="navigation">
+            <div class="navbar-header-public">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('web.home')}}">UA Badminton Tournament</a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="{{url_for('user.signin')}}" >Log In</a>
+                </li>
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.home')}}"><i class="fa fa-dashboard"></i> HOME</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.tournament')}}"><i class="fa fa-edit"></i> Tournament</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.public_view_players')}}"><i class="fa fa-desktop"></i> Players</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.events')}}"><i class="fa fa-desktop"></i> Events</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.draws')}}"><i class="fa fa-desktop"></i> Draws</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.matches')}}"><i class="fa fa-table"></i> Matches</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			    <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Draws <small></small>
+                        </h1>
+                    </div>
+                </div>
+                No draws set, Please check back later
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UA Badminton Tournament</title>
+    <!-- Bootstrap Styles-->
+    <link href="static/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="static/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="static/adminCustomStyle.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <script>
+        msg = "{{ msg }}";
+        var data = JSON.parse(msg.replace(/&quot;/g, '"').replace(/&#39;/g, '"').replace(/[\u0000-\u001F]+/g, ""));
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper-public">
+        <nav class="navbar navbar-default top-navbar-public" role="navigation">
+            <div class="navbar-header-public">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('web.home')}}">UA Badminton Tournament</a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="{{url_for('user.signin')}}" >Log In</a>
+                </li>
+            </ul>
+
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.home')}}"><i class="fa fa-dashboard"></i> HOME</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.tournament')}}"><i class="fa fa-edit"></i> Tournament</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.public_view_players')}}"><i class="fa fa-desktop"></i> Players</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.events')}}"><i class="fa fa-desktop"></i> Events</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.draws')}}"><i class="fa fa-desktop"></i> Draws</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.matches')}}"><i class="fa fa-table"></i> Matches</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            UA Badminton Tournament Home <small></small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-6 col-sm-4">
+                        <div class="panel panel-primary-public">
+                            <div class="panel-heading">
+                                Tournament Overview
+                            </div>
+                            <div class="panel-body">
+                                <p id="tournament_name">{{ msg.tournament_name }}</p>
+{#                                Date: 08/11/2023 <br>#}
+                                Location: Tucson, USA <br>
+                                Venue: {{ msg.location }} <br>
+                                Contact: Julie Fan (juliefan@arizona.edu) <br>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="{{url_for('web.tournament')}}">More Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-4">
+                        <div class="panel panel-info-public">
+                            <div class="panel-heading">
+                                Tournament Announcement
+                            </div>
+                            <div class="panel-body">
+                                {{ msg.announcements }}
+                            </div>
+                            <div class="panel-footer">
+                                Last Updated: 04/22/2023
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+<!--    <script src="assets/js/jquery-1.10.2.js"></script>-->
+<!--    &lt;!&ndash; Bootstrap Js &ndash;&gt;-->
+<!--    <script src="assets/js/bootstrap.min.js"></script>-->
+<!--    &lt;!&ndash; Metis Menu Js &ndash;&gt;-->
+<!--    <script src="assets/js/jquery.metisMenu.js"></script>-->
+<!--    &lt;!&ndash; Morris Chart Js &ndash;&gt;-->
+<!--    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>-->
+<!--    <script src="assets/js/morris/morris.js"></script>-->
+<!--    &lt;!&ndash; Custom Js &ndash;&gt;-->
+<!--    <script src="assets/js/custom-scripts.js"></script>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UA Badminton Tournament</title>
+	<!-- Bootstrap Styles-->
+    <link href="static/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="static/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+
+        <!-- Custom Styles-->
+    <link href="static/adminCustomStyle.css" rel="stylesheet" />
+    <link href="static/drawStyle.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="static/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper-public">
+        <nav class="navbar navbar-default top-navbar-public" role="navigation">
+            <div class="navbar-header-public">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('web.home')}}">UA Badminton Tournament</a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="{{url_for('user.signin')}}" >Log In</a>
+                </li>
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.home')}}"><i class="fa fa-dashboard"></i> HOME</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.tournament')}}"><i class="fa fa-edit"></i> Tournament</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.public_view_players')}}"><i class="fa fa-desktop"></i> Players</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.events')}}"><i class="fa fa-desktop"></i> Events</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.draws')}}"><i class="fa fa-desktop"></i> Draws</a>
+                    </li>
+                    <li>
+                        <a class="active-menu-public" href="{{url_for('web.matches')}}"><i class="fa fa-table"></i> Matches</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			    <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Draws <small></small>
+                        </h1>
+                    </div>
+                </div>
+                {% for event in msg %}
+                 <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                 {{ event['event_name'] }}
+                            </div>
+                            <div class="panel-body">
+                                <div>
+                                    <table class="draw">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                             {% for player_set in event['players'] %}
+                                            <tr>
+                                                <td class="border_b"> {{ player_set[0]['index']}}&nbsp;</td>
+                                                <td class="border_b drawrulercell drc_31" style="background-color: transparent;">
+                                                    &nbsp;
+                                                    <a href="">{{ player_set[0]['names'] }} </a>
+                                                    <span id="3001" class="match">&nbsp;</span>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                                 <tr>
+                                                <td>&nbsp;</td>
+                                                <td class="border_r">&nbsp;&nbsp;</td>
+                                                <td class="border_b drawrulercell drc_30" style="background-color: transparent;">
+                                                    &nbsp;
+                                                    <a href=""></a>
+                                                    <span id="2001" class="match">&nbsp;</span>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="border_b">{{ player_set[1]['index']}}&nbsp;</td>
+                                                <td class="border_br drawrulercell drc_30" style="background-color: transparent;">
+                                                    &nbsp;
+                                                    <a href="">{{ player_set[1]['names'] }}</a>
+                                                    <span id="3002" class="match">&nbsp;</span>
+                                                </td>
+                                                <!--<td class="border_r">
+                                                    &nbsp;
+                                                    <span class="score">
+                                                        <span>21-16</span>
+                                                        <span>21-18</span>
+                                                    </span>
+                                                    &nbsp;
+                                                </td>
+                                                <td>&nbsp;</td> -->
+                                            </tr>
+
+                                                 {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+             <!-- /. PAGE INNER  -->
+    </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+<!--    <script src="assets/js/jquery-1.10.2.js"></script>-->
+<!--      &lt;!&ndash; Bootstrap Js &ndash;&gt;-->
+<!--    <script src="assets/js/bootstrap.min.js"></script>-->
+<!--    &lt;!&ndash; Metis Menu Js &ndash;&gt;-->
+<!--    <script src="assets/js/jquery.metisMenu.js"></script>-->
+<!--     &lt;!&ndash; DATA TABLE SCRIPTS &ndash;&gt;-->
+<!--    <script src="assets/js/dataTables/jquery.dataTables.js"></script>-->
+<!--    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>-->
+    <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+         <!-- Custom Js -->
+<!--    <script src="assets/js/custom-scripts.js"></script>-->
+
+
+</body>
+</html>

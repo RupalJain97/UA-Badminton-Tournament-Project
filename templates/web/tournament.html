@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <titleUA Badminton Tournament
+    </title>
+    <!-- Bootstrap Styles-->
+    <link href="static/bootstrap.css" rel="stylesheet"/>
+    <!-- FontAwesome Styles-->
+    <link href="static/font-awesome.css" rel="stylesheet"/>
+    <!-- Custom Styles-->
+    <link href="static/adminCustomStyle.css" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <script>
+        msg = "{{ msg }}";
+        var data = JSON.parse(msg.replace(/&quot;/g, '"').replace(/&#39;/g, '"').replace(/[\u0000-\u001F]+/g, ""));
+        console.log(data);
+
+        window.onload = function () {
+            dataArr = data.events.map(event => event.name);
+            let events = dataArr.join(' <br>');
+            document.getElementById('events_created').innerHTML = events;
+            console.log(dataArr);
+
+            var dates = "";
+            const registration_open = data.registration_open;
+            const dateObj = new Date(registration_open);
+            const month = dateObj.getMonth() + 1; // getMonth() returns 0-indexed value, so add 1 to get the correct month
+            const day = dateObj.getDate();
+            const year = dateObj.getFullYear();
+            const outputDate = `${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}/${year}`;
+            const registration_closed = data.registration_closed;
+            const dateObj1 = new Date(registration_closed);
+            const month1 = dateObj1.getMonth() + 1; // getMonth() returns 0-indexed value, so add 1 to get the correct month
+            const day1 = dateObj1.getDate();
+            const year1 = dateObj1.getFullYear();
+            const outputDate1 = `${month1.toString().padStart(2, '0')}/${day1.toString().padStart(2, '0')}/${year1}`;
+            const tournament_start_date = data.tournament_start_date;
+            const dateObj2 = new Date(tournament_start_date);
+            const month2 = dateObj2.getMonth() + 1; // getMonth() returns 0-indexed value, so add 1 to get the correct month
+            const day2 = dateObj2.getDate();
+            const year2 = dateObj2.getFullYear();
+            const outputDate2 = `${month2.toString().padStart(2, '0')}/${day2.toString().padStart(2, '0')}/${year2}`;
+            const tournament_end_date = data.tournament_end_date;
+            const dateObj3 = new Date(tournament_end_date);
+            const month3 = dateObj3.getMonth() + 1; // getMonth() returns 0-indexed value, so add 1 to get the correct month
+            const day3 = dateObj3.getDate();
+            const year3 = dateObj3.getFullYear();
+            const outputDate3 = `${month3.toString().padStart(2, '0')}/${day3.toString().padStart(2, '0')}/${year3}`;
+            dates = "Registration Open: <br>" + outputDate + "<br> Entry Deadline: <br>" + outputDate1 + "<br> tournament: <br>" + outputDate2 + " <br> End of tournament: <br>" + outputDate3;
+            {#dates = dates.join(' <br>');#}
+            document.getElementById("dates").innerHTML = dates;
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper-public">
+    <nav class="navbar navbar-default top-navbar-public" role="navigation">
+        <div class="navbar-header-public">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('web.home') }}">UA Badminton Tournament</a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <a href="{{ url_for('user.signin') }}">Log In</a>
+            </li>
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li>
+                    <a class="active-menu-public" href="{{ url_for('web.home') }}"><i class="fa fa-dashboard"></i> HOME</a>
+                </li>
+                <li>
+                    <a class="active-menu-public" href="{{ url_for('web.tournament') }}"><i class="fa fa-edit"></i>
+                        Tournament</a>
+                </li>
+                <li>
+                    <a class="active-menu-public" href="{{ url_for('web.public_view_players') }}"><i
+                            class="fa fa-desktop"></i> Players</a>
+                </li>
+                <li>
+                    <a class="active-menu-public" href="{{ url_for('web.events') }}"><i class="fa fa-desktop"></i>
+                        Events</a>
+                </li>
+                <li>
+                    <a class="active-menu-public" href="{{ url_for('web.draws') }}"><i class="fa fa-desktop"></i> Draws</a>
+                </li>
+                <li>
+                    <a class="active-menu-public" href="{{ url_for('web.matches') }}"><i class="fa fa-table"></i>
+                        Matches</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        Active Tournament Details <small></small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-10 col-sm-4">
+                    <div class="panel panel-primary-public">
+                        <div class="panel-heading">
+                            General Information
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ msg.tournament_name }}</p>
+                            Date: {{ msg.tournament_start_date }} <br>
+                            Location: Tucson, USA <br>
+                            Venue: {{ msg.location }} <br>
+                            Contact: Julie Fan (juliefan@arizona.edu) <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-5 col-sm-4">
+                    <div class="panel panel-primary-public">
+                        <div class="panel-heading">
+                            Important Dates
+                        </div>
+                        <div class="panel-body" id="dates">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-4">
+                    <div class="panel panel-primary-public">
+                        <div class="panel-heading">
+                            Venue Direction
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ msg.location }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-5 col-sm-4">
+                    <div class="panel panel-primary-public">
+                        <div class="panel-heading">
+                            Events
+                        </div>
+                        <div class="panel-body" id="events_created">
+                            <div class="panel-body" id="events_created">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-4">
+                    <div class="panel panel-primary-public">
+                        <div class="panel-heading">
+                            Contact
+                        </div>
+                        <div class="panel-body">
+                            <p>UA Badminton Club Organization</p>
+                            Person of Contact: Julie Fan <br>
+                            Email: juliefan@arizona.edu <br>
+                            Phone: 520-123-3344 <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-10 col-sm-4">
+                    <div class="panel panel-primary-public">
+                        <div class="panel-heading">
+                            Regulation
+                        </div>
+                        <div class="panel-body">
+                            Fee per player: Fee includes rec center access, shuttles, lunch, and refreshments. <br>
+                            1 Event: $30 2 Events: $35 3 events: $40 Under 15: $15 (additional events +$5 per event)
+                            <br>
+                            <br>
+                            Online payment: We strongly encourage all the participants to pay online. <br>
+                            Zelle email: uazbadminton@gmail.com <br>
+                            Cash app: $uabadminton <br>
+                            <br>
+                            Currently, the maximum number of events allowed per person is 3. <br>
+                            <br>
+                            We will follow the ABCD drop flight format of play (triple elimination). If an event has
+                            less than 8 entries, then we will have one draw with single elimination format with a
+                            consolation draw. <br>
+                            If you have any questions about the ABCD format or the tournament, please feel free to
+                            contact us at uazbadminton@gmail.com. <br>
+                            <br>
+                            We are giving away trophies to the winners and runners of A and B divisons, and only to
+                            the
+                            winners of C and D division. <br>
+                            Light refreshments, snacks, and lunch will be provided. <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- /. ROW  -->
+        </div>
+            <!-- /. PAGE INNER  -->
+    </div>
+        <!-- /. PAGE WRAPPER  -->
+</div>
+    <!-- /. WRAPPER  -->
+</body>
+</html>
