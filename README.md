@@ -1,5 +1,7 @@
 # UArizona Badminton Tournament Management Software
 
+Software Engineering Project
+
 Date: May 23, 2023
 
 ## Overview
