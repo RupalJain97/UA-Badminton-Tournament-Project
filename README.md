@@ -18,15 +18,15 @@ Our primary customer were the UA Badminton Club officers. They are the primary u
 
 #### Snapshots
 
-![Picture 1](images/pic1.png)
+![Picture 1](pic3.png)
 
 *Fig. 1*: *Admin Dashboard*.
 
-![Picture 2](images/pic2.png)
+![Picture 2](pic2.png)
 
 *Fig. 2*: *Player Dashboard*.
 
-![Picture 3](images/pic3.png)
+![Picture 3](pic1.png)
 
 *Fig. 3*: *Public Page*.
 
