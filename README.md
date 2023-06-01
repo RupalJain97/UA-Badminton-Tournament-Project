@@ -47,3 +47,5 @@ Run the app using
 ```
 flask --app app.py --debug run
 ```
+
+Note: For database, we have used SQLAlchemy hosted on Amazon AWS server. 
